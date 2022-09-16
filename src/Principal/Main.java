@@ -10,12 +10,15 @@ package Principal;
  * @author emili
  */
 public class Main extends javax.swing.JFrame {
+    
+    private database bd = new database("./database.accdb");
 
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
+        bd.conectar();
     }
 
     /**
