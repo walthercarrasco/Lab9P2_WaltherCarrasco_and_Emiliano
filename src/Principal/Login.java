@@ -12,6 +12,8 @@ import javax.swing.UIManager;
  * @author emili
  */
 public class Login extends javax.swing.JFrame {
+    
+    database bd = new database("./database.accdb");
 
     /**
      * Creates new form Login
@@ -65,6 +67,11 @@ public class Login extends javax.swing.JFrame {
 
         BT_Registro.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         BT_Registro.setText("Registro");
+        BT_Registro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_RegistroMousePressed(evt);
+            }
+        });
         Login_BACKGROUND.add(BT_Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 230, 50));
 
         BT_Ingresar.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
@@ -75,6 +82,10 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BT_RegistroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_RegistroMousePressed
+        new Registro().setVisible(true);
+    }//GEN-LAST:event_BT_RegistroMousePressed
 
     /**
      * @param args the command line arguments
