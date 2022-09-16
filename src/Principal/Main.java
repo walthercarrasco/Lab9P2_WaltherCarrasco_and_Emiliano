@@ -33,23 +33,23 @@ public class Main extends javax.swing.JFrame {
         Main_BACKGROUND = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        CB_Juego = new javax.swing.JComboBox<>();
+        Juego_BT_Ejecutar = new javax.swing.JButton();
+        Juego_BT_Generar = new javax.swing.JButton();
+        Juego_TF2_Nombre = new javax.swing.JTextField();
+        Juego_TF1_Categoria = new javax.swing.JTextField();
+        Juego_TF1_Nombre = new javax.swing.JTextField();
+        Juego_TF2_Categoria = new javax.swing.JTextField();
+        Juego_TF2_Costo = new javax.swing.JTextField();
+        Juego_TF1_Costo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        Juego_TB1_ = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
+        Juego_TB2_ = new javax.swing.JTable();
+        Juego_SQL = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
@@ -70,7 +70,12 @@ public class Main extends javax.swing.JFrame {
         MenuBar = new javax.swing.JMenuBar();
         BT_Archivo = new javax.swing.JMenu();
         MItem_AbrirArchivo = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        MItem_ArchivosRecientes = new javax.swing.JMenu();
+        ArchivoReciente1 = new javax.swing.JMenuItem();
+        ArchivoReciente2 = new javax.swing.JMenuItem();
+        ArchivoReciente3 = new javax.swing.JMenuItem();
+        ArchivoReciente4 = new javax.swing.JMenuItem();
+        ArchivoReciente5 = new javax.swing.JMenuItem();
         MItem_Limpiar = new javax.swing.JMenuItem();
         MItem_Salir = new javax.swing.JMenuItem();
 
@@ -81,35 +86,35 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 40));
+        CB_Juego.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        CB_Juego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(CB_Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 40));
 
-        jButton1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 230, 40));
+        Juego_BT_Ejecutar.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Juego_BT_Ejecutar.setText("jButton1");
+        jPanel1.add(Juego_BT_Ejecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 230, 40));
 
-        jButton2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jButton2.setText("jButton1");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 230, 40));
+        Juego_BT_Generar.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Juego_BT_Generar.setText("jButton1");
+        jPanel1.add(Juego_BT_Generar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 230, 40));
 
-        jTextField1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 260, 40));
+        Juego_TF2_Nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel1.add(Juego_TF2_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, 260, 40));
 
-        jTextField2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 270, 40));
+        Juego_TF1_Categoria.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel1.add(Juego_TF1_Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 270, 40));
 
-        jTextField3.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 270, 40));
+        Juego_TF1_Nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel1.add(Juego_TF1_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 270, 40));
 
-        jTextField4.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 260, 40));
+        Juego_TF2_Categoria.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel1.add(Juego_TF2_Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 260, 40));
 
-        jTextField5.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 260, 40));
+        Juego_TF2_Costo.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel1.add(Juego_TF2_Costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 260, 40));
 
-        jTextField6.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 270, 40));
+        Juego_TF1_Costo.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel1.add(Juego_TF1_Costo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 270, 40));
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel1.setText("Costo");
@@ -123,8 +128,8 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setText("Nombre");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 60, -1));
 
-        jTable2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Juego_TB1_.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Juego_TB1_.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -140,12 +145,12 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(Juego_TB1_);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 1000, 150));
 
-        jTable3.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        Juego_TB2_.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Juego_TB2_.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -161,14 +166,14 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane4.setViewportView(Juego_TB2_);
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 1000, 170));
 
-        jLabel9.setFont(new java.awt.Font("Microsoft JhengHei", 1, 12)); // NOI18N
-        jLabel9.setText("SQL");
-        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 204)));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 266, 620, 50));
+        Juego_SQL.setFont(new java.awt.Font("Microsoft JhengHei", 1, 12)); // NOI18N
+        Juego_SQL.setText("SQL");
+        Juego_SQL.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 204)));
+        jPanel1.add(Juego_SQL, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 266, 620, 50));
 
         jTabbedPane1.addTab("Juego", jPanel1);
 
@@ -257,8 +262,24 @@ public class Main extends javax.swing.JFrame {
         MItem_AbrirArchivo.setText("Abrir Archivo");
         BT_Archivo.add(MItem_AbrirArchivo);
 
-        jMenu1.setText("Archivso Recientes");
-        BT_Archivo.add(jMenu1);
+        MItem_ArchivosRecientes.setText("Archivos Recientes");
+
+        ArchivoReciente1.setText("ArchivoReciente1");
+        MItem_ArchivosRecientes.add(ArchivoReciente1);
+
+        ArchivoReciente2.setText("ArchivoReciente2");
+        MItem_ArchivosRecientes.add(ArchivoReciente2);
+
+        ArchivoReciente3.setText("ArchivoReciente3");
+        MItem_ArchivosRecientes.add(ArchivoReciente3);
+
+        ArchivoReciente4.setText("ArchivoReciente4");
+        MItem_ArchivosRecientes.add(ArchivoReciente4);
+
+        ArchivoReciente5.setText("ArchivoReciente5");
+        MItem_ArchivosRecientes.add(ArchivoReciente5);
+
+        BT_Archivo.add(MItem_ArchivosRecientes);
 
         MItem_Limpiar.setText("Limpiar");
         BT_Archivo.add(MItem_Limpiar);
@@ -293,53 +314,34 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MItem_SalirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ArchivoReciente1;
+    private javax.swing.JMenuItem ArchivoReciente2;
+    private javax.swing.JMenuItem ArchivoReciente3;
+    private javax.swing.JMenuItem ArchivoReciente4;
+    private javax.swing.JMenuItem ArchivoReciente5;
     private javax.swing.JMenu BT_Archivo;
+    private javax.swing.JComboBox<String> CB_Juego;
+    private javax.swing.JButton Juego_BT_Ejecutar;
+    private javax.swing.JButton Juego_BT_Generar;
+    private javax.swing.JLabel Juego_SQL;
+    private javax.swing.JTable Juego_TB1_;
+    private javax.swing.JTable Juego_TB2_;
+    private javax.swing.JTextField Juego_TF1_Categoria;
+    private javax.swing.JTextField Juego_TF1_Costo;
+    private javax.swing.JTextField Juego_TF1_Nombre;
+    private javax.swing.JTextField Juego_TF2_Categoria;
+    private javax.swing.JTextField Juego_TF2_Costo;
+    private javax.swing.JTextField Juego_TF2_Nombre;
     private javax.swing.JMenuItem MItem_AbrirArchivo;
+    private javax.swing.JMenu MItem_ArchivosRecientes;
     private javax.swing.JMenuItem MItem_Limpiar;
     private javax.swing.JMenuItem MItem_Salir;
     private javax.swing.JPanel Main_BACKGROUND;
     private javax.swing.JMenuBar MenuBar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -349,8 +351,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -360,15 +360,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
