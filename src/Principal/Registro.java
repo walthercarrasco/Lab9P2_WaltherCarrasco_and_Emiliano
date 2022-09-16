@@ -22,6 +22,7 @@ public class Registro extends javax.swing.JFrame {
     public Registro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        bd.conectar();
     }
 
     /**
@@ -116,10 +117,11 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Reg_BT_RegistrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Reg_BT_RegistrarMousePressed
+        
         try{
+            boolean val = true;
             bd.query.execute("select usuario from usuarios");
             ResultSet rs = bd.query.getResultSet();
-            boolean val = true;
             while(rs.next()){
                 if(rs.getString(1).equals(Reg_TF_Usuario.getText())){
                     val = false;
@@ -148,7 +150,7 @@ public class Registro extends javax.swing.JFrame {
                     ps.setString(2, Reg_TF_Nombre.getText());
                     ps.setInt(3, (int)Reg_SP_Edad.getValue());
                     ps.setString(4, contra);
-                    ps.setString(4, Reg_TF_Correo.getText());
+                    ps.setString(5, Reg_TF_Correo.getText());
                     ps.execute();
                     bd.commit();
                     this.dispose();
@@ -156,7 +158,7 @@ public class Registro extends javax.swing.JFrame {
                     
             }
         }catch(Exception e){
-            
+            e.printStackTrace();
         }
     }//GEN-LAST:event_Reg_BT_RegistrarMousePressed
 
