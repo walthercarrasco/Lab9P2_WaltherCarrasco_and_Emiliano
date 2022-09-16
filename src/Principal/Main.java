@@ -19,6 +19,8 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         bd.conectar();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,7 +35,7 @@ public class Main extends javax.swing.JFrame {
         Main_BACKGROUND = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        CB_Juego = new javax.swing.JComboBox<>();
+        Juego_CB = new javax.swing.JComboBox<>();
         Juego_BT_Ejecutar = new javax.swing.JButton();
         Juego_BT_Generar = new javax.swing.JButton();
         Juego_TF2_Nombre = new javax.swing.JTextField();
@@ -46,27 +48,27 @@ public class Main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        Juego_TB1_ = new javax.swing.JTable();
+        Juego_TB1 = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        Juego_TB2_ = new javax.swing.JTable();
+        Juego_TB2 = new javax.swing.JTable();
         Juego_SQL = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        Idioma_TF_Nombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        Idioma_BT_Agregar = new javax.swing.JButton();
+        Idioma_BT_Crear = new javax.swing.JButton();
+        Idioma_CB = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Idioma_TB = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jTextField8 = new javax.swing.JTextField();
+        Correos_TF_Para = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        Correos_TF_Asunto = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Correos_TA_Mensaje = new javax.swing.JTextArea();
         MenuBar = new javax.swing.JMenuBar();
         BT_Archivo = new javax.swing.JMenu();
         MItem_AbrirArchivo = new javax.swing.JMenuItem();
@@ -86,16 +88,16 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CB_Juego.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        CB_Juego.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(CB_Juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 40));
+        Juego_CB.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Juego_CB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(Juego_CB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 40));
 
         Juego_BT_Ejecutar.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Juego_BT_Ejecutar.setText("jButton1");
+        Juego_BT_Ejecutar.setText("Ejecutar");
         jPanel1.add(Juego_BT_Ejecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 230, 40));
 
         Juego_BT_Generar.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Juego_BT_Generar.setText("jButton1");
+        Juego_BT_Generar.setText("Generar");
         jPanel1.add(Juego_BT_Generar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 230, 40));
 
         Juego_TF2_Nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
@@ -128,8 +130,8 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setText("Nombre");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 60, -1));
 
-        Juego_TB1_.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Juego_TB1_.setModel(new javax.swing.table.DefaultTableModel(
+        Juego_TB1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Juego_TB1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -145,12 +147,12 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(Juego_TB1_);
+        jScrollPane3.setViewportView(Juego_TB1);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 1000, 150));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 1000, 150));
 
-        Juego_TB2_.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Juego_TB2_.setModel(new javax.swing.table.DefaultTableModel(
+        Juego_TB2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Juego_TB2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -166,9 +168,9 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(Juego_TB2_);
+        jScrollPane4.setViewportView(Juego_TB2);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 1000, 170));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 1000, 170));
 
         Juego_SQL.setFont(new java.awt.Font("Microsoft JhengHei", 1, 12)); // NOI18N
         Juego_SQL.setText("SQL");
@@ -183,26 +185,26 @@ public class Main extends javax.swing.JFrame {
         jLabel4.setText("Idioma a Juego");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 110, -1));
 
-        jTextField7.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 250, 40));
+        Idioma_TF_Nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel2.add(Idioma_TF_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 250, 40));
 
         jLabel5.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel5.setText("Nombre");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 60, -1));
 
-        jButton3.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jButton3.setText("jButton1");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 250, 40));
+        Idioma_BT_Agregar.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Idioma_BT_Agregar.setText("Agregar");
+        jPanel2.add(Idioma_BT_Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 250, 40));
 
-        jButton4.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jButton4.setText("jButton1");
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 250, 40));
+        Idioma_BT_Crear.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Idioma_BT_Crear.setText("Crear");
+        jPanel2.add(Idioma_BT_Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 250, 40));
 
-        jComboBox2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 250, 40));
+        Idioma_CB.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        Idioma_CB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(Idioma_CB, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 250, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Idioma_TB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -221,7 +223,7 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Idioma_TB);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 600, 450));
 
@@ -229,15 +231,15 @@ public class Main extends javax.swing.JFrame {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField8.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel3.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 310, 40));
+        Correos_TF_Para.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel3.add(Correos_TF_Para, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 310, 40));
 
         jLabel6.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel6.setText("Para");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 60, -1));
 
-        jTextField9.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 310, 40));
+        Correos_TF_Asunto.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        jPanel3.add(Correos_TF_Asunto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 310, 40));
 
         jLabel7.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel7.setText("Asunto");
@@ -247,9 +249,9 @@ public class Main extends javax.swing.JFrame {
         jLabel8.setText("Mensaje");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 60, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        Correos_TA_Mensaje.setColumns(20);
+        Correos_TA_Mensaje.setRows(5);
+        jScrollPane2.setViewportView(Correos_TA_Mensaje);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 810, 350));
 
@@ -322,12 +324,20 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem ArchivoReciente4;
     private javax.swing.JMenuItem ArchivoReciente5;
     private javax.swing.JMenu BT_Archivo;
-    private javax.swing.JComboBox<String> CB_Juego;
+    private javax.swing.JTextArea Correos_TA_Mensaje;
+    private javax.swing.JTextField Correos_TF_Asunto;
+    private javax.swing.JTextField Correos_TF_Para;
+    private javax.swing.JButton Idioma_BT_Agregar;
+    private javax.swing.JButton Idioma_BT_Crear;
+    private javax.swing.JComboBox<String> Idioma_CB;
+    private javax.swing.JTable Idioma_TB;
+    private javax.swing.JTextField Idioma_TF_Nombre;
     private javax.swing.JButton Juego_BT_Ejecutar;
     private javax.swing.JButton Juego_BT_Generar;
+    private javax.swing.JComboBox<String> Juego_CB;
     private javax.swing.JLabel Juego_SQL;
-    private javax.swing.JTable Juego_TB1_;
-    private javax.swing.JTable Juego_TB2_;
+    private javax.swing.JTable Juego_TB1;
+    private javax.swing.JTable Juego_TB2;
     private javax.swing.JTextField Juego_TF1_Categoria;
     private javax.swing.JTextField Juego_TF1_Costo;
     private javax.swing.JTextField Juego_TF1_Nombre;
@@ -340,9 +350,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem MItem_Salir;
     private javax.swing.JPanel Main_BACKGROUND;
     private javax.swing.JMenuBar MenuBar;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -359,10 +366,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
