@@ -5,12 +5,17 @@
  */
 package Principal;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
+ *
  *
  * @author emili
  */
 public class Registro extends javax.swing.JFrame {
 
+    
+    database bd = new database("./database.accdb");
     /**
      * Creates new form Registro
      */
@@ -63,6 +68,11 @@ public class Registro extends javax.swing.JFrame {
 
         Reg_BT_Registrar.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         Reg_BT_Registrar.setText("Registro");
+        Reg_BT_Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Reg_BT_RegistrarMousePressed(evt);
+            }
+        });
         Registro_BACKGROUND.add(Reg_BT_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 230, 50));
 
         Reg_TF_Nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
@@ -104,40 +114,51 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void Reg_BT_RegistrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Reg_BT_RegistrarMousePressed
+        try{
+            bd.query.execute("select usuario from usuarios");
+            ResultSet rs = bd.query.getResultSet();
+            boolean val = true;
+            while(rs.next()){
+                if(rs.getString(1).equals(Reg_TF_Usuario.getText())){
+                    val = false;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Registro().setVisible(true);
+            if(val == false){
+                JOptionPane.showMessageDialog(this, "Ingrese un usuario distinto");
+            }else{
+                if(Reg_TF_Correo.getText().isEmpty() || Reg_TF_Correo.getText().isBlank()){
+                    val = false;
+                }
+                if(String.valueOf(Reg_PF_Password.getPassword()).isBlank() || String.valueOf(Reg_PF_Password.getPassword()).isEmpty()){
+                    val = false;
+                }
+                if(Reg_TF_Nombre.getText().isBlank() || Reg_TF_Nombre.getText().isEmpty()){
+                    val = false;
+                }
+                if(Reg_TF_Usuario.getText().isBlank() || Reg_TF_Usuario.getText().isEmpty()){
+                    val = false;
+                }
+                if(val == true){
+                    String contra = LibLab9.encrypt(String.valueOf(Reg_PF_Password.getPassword()));
+                    PreparedStatement ps = bd.query.getConnection().prepareStatement("insert into usuarios (usuario,nombre,edad,contra,correo)"
+                            + " values (?,?,?,?,?)");
+                    ps.setString(1, Reg_TF_Usuario.getText());
+                    ps.setString(2, Reg_TF_Nombre.getText());
+                    ps.setInt(3, (int)Reg_SP_Edad.getValue());
+                    ps.setString(4, contra);
+                    ps.setString(4, Reg_TF_Correo.getText());
+                    ps.execute();
+                    bd.commit();
+                    this.dispose();
+                }
+                    
             }
-        });
-    }
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_Reg_BT_RegistrarMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Reg_BT_Registrar;
