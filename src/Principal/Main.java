@@ -230,14 +230,14 @@ public class Main extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField8.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel3.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 250, 40));
+        jPanel3.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 310, 40));
 
         jLabel6.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel6.setText("Para");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 60, -1));
 
         jTextField9.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 250, 40));
+        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 310, 40));
 
         jLabel7.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel7.setText("Asunto");
