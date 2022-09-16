@@ -7,6 +7,7 @@ package Principal;
 
 import javax.swing.UIManager;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -100,8 +101,17 @@ public class Login extends javax.swing.JFrame {
         try{
             bd.query.execute("select usuario,contra from usuarios");
             ResultSet rs = bd.query.getResultSet();
+            boolean val = false;
             while(rs.next()){
-                
+                if(rs.getString(1).equals(usuario) && rs.getString(2).equals(contra)){
+                    val = true;
+                }
+            }
+            if(val == true){
+                new Main().setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Usuario y contra incorrectos");
             }
         }catch(Exception e){
             
