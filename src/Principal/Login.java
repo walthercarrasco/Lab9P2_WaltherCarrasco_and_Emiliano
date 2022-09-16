@@ -6,6 +6,7 @@
 package Principal;
 
 import javax.swing.UIManager;
+import java.sql.*;
 
 /**
  *
@@ -76,6 +77,11 @@ public class Login extends javax.swing.JFrame {
 
         BT_Ingresar.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         BT_Ingresar.setText("Ingresar");
+        BT_Ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BT_IngresarMousePressed(evt);
+            }
+        });
         Login_BACKGROUND.add(BT_Ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 230, 50));
 
         getContentPane().add(Login_BACKGROUND, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 610));
@@ -86,6 +92,21 @@ public class Login extends javax.swing.JFrame {
     private void BT_RegistroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_RegistroMousePressed
         new Registro().setVisible(true);
     }//GEN-LAST:event_BT_RegistroMousePressed
+
+    private void BT_IngresarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_IngresarMousePressed
+        String usuario = TF_Usuario.getText();
+        String contra = String.valueOf(PF_Password.getPassword());
+        contra = LibLab9.encrypt(contra);
+        try{
+            bd.query.execute("select usuario,contra from usuarios");
+            ResultSet rs = bd.query.getResultSet();
+            while(rs.next()){
+                
+            }
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_BT_IngresarMousePressed
 
     /**
      * @param args the command line arguments
