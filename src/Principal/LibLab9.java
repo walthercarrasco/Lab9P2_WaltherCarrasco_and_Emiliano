@@ -1,4 +1,4 @@
-package lab9;
+package Principal;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

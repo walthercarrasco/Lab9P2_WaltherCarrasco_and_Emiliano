@@ -27,7 +27,7 @@ public class Registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Login_BACKGROUND = new javax.swing.JPanel();
+        Registro_BACKGROUND = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Reg_TF_Usuario = new javax.swing.JTextField();
         Reg_PF_Password = new javax.swing.JPasswordField();
@@ -43,62 +43,62 @@ public class Registro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Login_BACKGROUND.setBackground(new java.awt.Color(51, 51, 51));
-        Login_BACKGROUND.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Registro_BACKGROUND.setBackground(new java.awt.Color(51, 51, 51));
+        Registro_BACKGROUND.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel2.setText("Contraseña");
-        Login_BACKGROUND.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
+        Registro_BACKGROUND.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
 
         Reg_TF_Usuario.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Login_BACKGROUND.add(Reg_TF_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 240, 40));
+        Registro_BACKGROUND.add(Reg_TF_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 240, 40));
 
         Reg_PF_Password.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Login_BACKGROUND.add(Reg_PF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 240, 40));
+        Registro_BACKGROUND.add(Reg_PF_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 240, 40));
 
         jLabel3.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 204));
         jLabel3.setText("Registro");
-        Login_BACKGROUND.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
+        Registro_BACKGROUND.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
 
         Reg_BT_Registrar.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         Reg_BT_Registrar.setText("Registro");
-        Login_BACKGROUND.add(Reg_BT_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 230, 50));
+        Registro_BACKGROUND.add(Reg_BT_Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 230, 50));
 
         Reg_TF_Nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Login_BACKGROUND.add(Reg_TF_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 240, 40));
+        Registro_BACKGROUND.add(Reg_TF_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 240, 40));
 
         jLabel4.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel4.setText("Nombre");
-        Login_BACKGROUND.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
+        Registro_BACKGROUND.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel5.setText("Edad");
-        Login_BACKGROUND.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, -1, -1));
+        Registro_BACKGROUND.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, -1, -1));
 
         Reg_TF_Correo.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Login_BACKGROUND.add(Reg_TF_Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 240, 40));
+        Registro_BACKGROUND.add(Reg_TF_Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 240, 40));
 
         Reg_SP_Edad.setModel(new javax.swing.SpinnerNumberModel(10, 10, 100, 1));
-        Login_BACKGROUND.add(Reg_SP_Edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 220, 30));
+        Registro_BACKGROUND.add(Reg_SP_Edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 220, 30));
 
         jLabel6.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel6.setText("Correo");
-        Login_BACKGROUND.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
+        Registro_BACKGROUND.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel7.setText("Usuario");
-        Login_BACKGROUND.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+        Registro_BACKGROUND.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Login_BACKGROUND, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Registro_BACKGROUND, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Login_BACKGROUND, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Registro_BACKGROUND, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -140,13 +140,13 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Login_BACKGROUND;
     private javax.swing.JButton Reg_BT_Registrar;
     private javax.swing.JPasswordField Reg_PF_Password;
     private javax.swing.JSpinner Reg_SP_Edad;
     private javax.swing.JTextField Reg_TF_Correo;
     private javax.swing.JTextField Reg_TF_Nombre;
     private javax.swing.JTextField Reg_TF_Usuario;
+    private javax.swing.JPanel Registro_BACKGROUND;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

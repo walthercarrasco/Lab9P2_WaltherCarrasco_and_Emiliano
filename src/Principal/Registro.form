@@ -23,17 +23,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Login_BACKGROUND" min="-2" pref="670" max="-2" attributes="0"/>
+          <Component id="Registro_BACKGROUND" min="-2" pref="670" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Login_BACKGROUND" min="-2" pref="610" max="-2" attributes="0"/>
+          <Component id="Registro_BACKGROUND" min="-2" pref="610" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="Login_BACKGROUND">
+    <Container class="javax.swing.JPanel" name="Registro_BACKGROUND">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
