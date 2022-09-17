@@ -8,8 +8,10 @@ package Principal;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
@@ -299,8 +301,23 @@ public class Main extends javax.swing.JFrame {
         Main_BACKGROUND.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
 
         BT_Archivo.setText("Archivo");
+        BT_Archivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BT_ArchivoActionPerformed(evt);
+            }
+        });
 
         MItem_AbrirArchivo.setText("Abrir Archivo");
+        MItem_AbrirArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                MItem_AbrirArchivoMousePressed(evt);
+            }
+        });
+        MItem_AbrirArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MItem_AbrirArchivoActionPerformed(evt);
+            }
+        });
         BT_Archivo.add(MItem_AbrirArchivo);
 
         MItem_ArchivosRecientes.setText("Archivos Recientes");
@@ -501,6 +518,33 @@ query = "select Id from idioma where nombre='"+ Idioma_TF_Nombre.getText() +"'";
             }
         }
     }//GEN-LAST:event_Idioma_BT_AgregarActionPerformed
+
+    private void MItem_AbrirArchivoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MItem_AbrirArchivoMousePressed
+        
+    }//GEN-LAST:event_MItem_AbrirArchivoMousePressed
+
+    private void BT_ArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ArchivoActionPerformed
+       
+    }//GEN-LAST:event_BT_ArchivoActionPerformed
+
+    private void MItem_AbrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MItem_AbrirArchivoActionPerformed
+        try{
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            JFileChooser f = new JFileChooser("./");
+            UIManager.setLookAndFeel(new FlatDarkLaf());   
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            if(f.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){   
+                File file = f.getSelectedFile();
+                ObjectInputStream os = new ObjectInputStream(new FileInputStream(file));
+                String query = (String)os.readObject();   
+                Juego_SQL.setText(query);
+                os.close();
+            }            
+        }catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_MItem_AbrirArchivoActionPerformed
 
     private String ObtenerQuery(){
         String query = ""; 
