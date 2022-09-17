@@ -13,6 +13,10 @@ import java.io.FileWriter;
 import java.io.ObjectOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
+import java.sql.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,6 +35,7 @@ public class Main extends javax.swing.JFrame {
         l.loadRecent();
         l.changeRecent(MItem_ArchivosRecientes, Juego_SQL);
         this.setLocationRelativeTo(null);
+        Tabla();
     }
 
     /**
@@ -79,6 +84,7 @@ public class Main extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Correos_TA_Mensaje = new javax.swing.JTextArea();
+        b_enviar = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
         BT_Archivo = new javax.swing.JMenu();
         MItem_AbrirArchivo = new javax.swing.JMenuItem();
@@ -209,10 +215,20 @@ public class Main extends javax.swing.JFrame {
 
         Idioma_BT_Agregar.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
         Idioma_BT_Agregar.setText("Agregar");
+        Idioma_BT_Agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Idioma_BT_AgregarActionPerformed(evt);
+            }
+        });
         jPanel2.add(Idioma_BT_Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 250, 40));
 
         Idioma_BT_Crear.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
         Idioma_BT_Crear.setText("Crear");
+        Idioma_BT_Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Idioma_BT_CrearActionPerformed(evt);
+            }
+        });
         jPanel2.add(Idioma_BT_Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 250, 40));
 
         Idioma_CB.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
@@ -270,6 +286,14 @@ public class Main extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 810, 350));
 
+        b_enviar.setText("Enviar");
+        b_enviar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                b_enviarMousePressed(evt);
+            }
+        });
+        jPanel3.add(b_enviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 720, 120, 40));
+
         jTabbedPane1.addTab("Correos", jPanel3);
 
         Main_BACKGROUND.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
@@ -319,7 +343,8 @@ public class Main extends javax.swing.JFrame {
     private void MItem_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MItem_SalirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MItem_SalirActionPerformed
-
+  
+  
     private void Juego_BT_GenerarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Juego_BT_GenerarMousePressed
         try{
             if(!ObtenerQuery().isBlank() && !ObtenerQuery().isEmpty()){
@@ -352,9 +377,12 @@ public class Main extends javax.swing.JFrame {
                 if(Juego_SQL.getText().equalsIgnoreCase("SQL") || Juego_SQL.getText().isBlank() ||Juego_SQL.getText().isEmpty() ){
                     bd.query.execute(ObtenerQuery());
                     bd.commit();
+                    Tabla();
                 }else{
                     bd.query.execute(Juego_SQL.getText());
                     bd.commit();
+                    l.setTables(Juego_TB2, Juego_TB1);
+                    Tabla();
                 }           
             }catch(Exception e){
 
@@ -365,6 +393,114 @@ public class Main extends javax.swing.JFrame {
     private void MItem_LimpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MItem_LimpiarMousePressed
         Juego_SQL.setText("SQL");
     }//GEN-LAST:event_MItem_LimpiarMousePressed
+
+    private void b_enviarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_enviarMousePressed
+        try{
+            l.sendMail(Correos_TA_Mensaje.getText(), Correos_TF_Asunto.getText(), Correos_TF_Para.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Sistema de correo fuera de linea por el momento");
+        }
+        
+    }//GEN-LAST:event_b_enviarMousePressed
+
+    private void Idioma_BT_CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Idioma_BT_CrearActionPerformed
+                PreparedStatement PS;
+        ResultSet RS;
+        int Id;
+        
+String query = "";
+        
+        
+        if(!Idioma_TF_Nombre.getText().isBlank()) {
+            try {
+                bd.conectar();
+                
+                
+query = "insert into idioma(nombre) values(?)";
+            //Insert a bd
+                PS = bd.query.getConnection().prepareStatement(   query   );
+                PS.setString(1, Idioma_TF_Nombre.getText());
+                PS.executeUpdate();
+            //Fin Insert a bd               
+            
+            
+query = "select Id from idioma where nombre='"+ Idioma_TF_Nombre.getText() +"'";
+            //Select ID del idioma from bd, para agregarlo a la tabla
+                bd.query.execute(   query   );
+                RS = bd.query.getResultSet();
+                RS.next();
+                
+                Id = RS.getInt(1);
+            //Fin Select ID del idioma from bd, para agregarlo a la tabla
+            
+
+            //Agregar a Tabla
+                DefaultTableModel modelo = (DefaultTableModel) Idioma_TB.getModel();
+                Object[] newRow = {
+                    Id,
+                    Idioma_TF_Nombre.getText()
+                };
+                modelo.addRow(newRow);
+            //Fin Agregar a Tabla
+                Idioma_TF_Nombre.setText("");
+            
+                bd.desconectar();
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_Idioma_BT_CrearActionPerformed
+
+    private void Idioma_BT_AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Idioma_BT_AgregarActionPerformed
+
+        PreparedStatement PS;
+        ResultSet RS;
+        String Selected_Idioma;
+        String Selected_Juego;
+        String query;
+        int Idioma_Id;
+        int Juego_Id;
+        
+        if(Idioma_TB.getSelectedRow() != -1 && Idioma_CB.getSelectedIndex() != -1) {
+            
+            try {
+                bd.conectar();
+                
+                Selected_Idioma = (String) Idioma_TB.getValueAt(Idioma_TB.getSelectedRow(), 1);
+                query = "select Id from idioma where nombre='" + Selected_Idioma + "'";
+            //Select ID del idioma from bd
+                bd.query.execute(query);
+                RS = bd.query.getResultSet();
+                RS.next();
+
+                Idioma_Id = RS.getInt(1);
+            //Fin Select ID del idioma from bd  
+
+                
+                Selected_Juego = (String) Idioma_CB.getSelectedItem();
+                query = "select Id from juego where nombre='" + Selected_Juego + "'";
+            //Select ID del juego from bd
+                bd.query.execute(query);
+                RS = bd.query.getResultSet();
+                RS.next();
+
+                Juego_Id = RS.getInt(1);
+            //Fin Select ID del juego from bd  
+            
+                query = "insert into idiojuego(idioma, juego) values(?,?)";
+            //Insert a bd
+                PS = bd.query.getConnection().prepareStatement(query);
+                PS.setInt(1, Idioma_Id);
+                PS.setInt(2, Juego_Id);
+                PS.executeUpdate();
+            //Fin Insert a bd            
+            
+                bd.desconectar();
+                Tabla();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_Idioma_BT_AgregarActionPerformed
 
     private String ObtenerQuery(){
         String query = ""; 
@@ -415,6 +551,108 @@ public class Main extends javax.swing.JFrame {
         }
         return query;
     }
+    
+    private void Tabla(){
+        Juego_TB1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Categoria", "Costo", "Idiomas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });    
+        try{
+            bd.query.execute("select * from juego");
+            ResultSet rs = bd.query.getResultSet();
+            DefaultTableModel model = (DefaultTableModel)Juego_TB1.getModel();
+            while(rs.next()){
+                
+                int id = rs.getInt("id");
+                String idiomas = "";
+                bd.query.execute("select idioma from idiojuego where juego="+id);
+                ResultSet rs2 = bd.query.getResultSet();
+                while(rs2.next()){
+                    int ididioma = rs2.getInt(1);
+                    bd.query.execute("select nombre from idioma where id="+idiomas);
+                    ResultSet r = bd.query.getResultSet();
+                    if(r.next()){
+                        idiomas += r.getString(1)+",";
+                    }
+                }
+                String nombre = rs.getString("nombre");
+                String categoria = rs.getString("categoria");
+                int costo = rs.getInt("costo");
+                Object[] row = {
+                    id,
+                    nombre,
+                    categoria,
+                    costo,
+                    idiomas
+                };
+                model.addRow(row);
+            }
+            Juego_TB1.setModel(model);
+            
+            ActualizarIdiomas();
+        }catch(Exception e){
+            
+        }
+        
+    }
+    
+    private void ActualizarIdiomas(){
+        String Nombre_Juego;
+        String query;
+        ResultSet RS;
+        
+        try {
+            bd.conectar();
+        //Agregar juegos a ComboBox
+            DefaultComboBoxModel modeloCB = (DefaultComboBoxModel) Idioma_CB.getModel();
+            modeloCB.removeAllElements();
+
+            query = "select nombre from juego";
+            bd.query.execute(query);
+            RS = bd.query.getResultSet();
+
+            while (RS.next()) {
+                modeloCB.addElement((String) RS.getString(1));
+            }
+        //Fin Agregar juegos a ComboBox
+
+        
+        //Agregar idiomas a Tabla
+            DefaultTableModel modeloTB = (DefaultTableModel) Idioma_TB.getModel();
+            modeloTB.setRowCount(0);
+            
+            query = "select Id,nombre from idioma";
+            bd.query.execute(query);
+            RS = bd.query.getResultSet();
+            
+            while(RS.next()){
+                Object[] newRow = {
+                    RS.getInt(1),
+                    RS.getString(2)
+                };
+                modeloTB.addRow(newRow);
+            }
+        //Fin Agregar idiomas a Tabla    
+
+            Idioma_CB.setModel(modeloCB);
+            Idioma_TB.setModel(modeloTB);
+            
+            bd.desconectar();
+        } catch (Exception e) {
+        }
+    }
         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -445,6 +683,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem MItem_Salir;
     private javax.swing.JPanel Main_BACKGROUND;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JButton b_enviar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

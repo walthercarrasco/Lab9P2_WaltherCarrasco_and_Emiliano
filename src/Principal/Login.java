@@ -60,6 +60,11 @@ public class Login extends javax.swing.JFrame {
         Login_BACKGROUND.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
 
         TF_Usuario.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
+        TF_Usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TF_UsuarioKeyPressed(evt);
+            }
+        });
         Login_BACKGROUND.add(TF_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 360, 40));
 
         PF_Password.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
@@ -120,6 +125,12 @@ public class Login extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_BT_IngresarMousePressed
+
+    private void TF_UsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TF_UsuarioKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            PF_Password.requestFocus(true);
+        }
+    }//GEN-LAST:event_TF_UsuarioKeyPressed
 
     /**
      * @param args the command line arguments
