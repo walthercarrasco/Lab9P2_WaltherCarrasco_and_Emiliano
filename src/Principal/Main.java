@@ -399,6 +399,9 @@ public class Main extends javax.swing.JFrame {
                     bd.query.execute(Juego_SQL.getText());
                     bd.commit();
                     l.setTables(Juego_TB2, Juego_TB1);
+                    if(Juego_SQL.getText().contains("select")){
+                        Tabla2();
+                    }
                     Tabla();
                 }           
             }catch(Exception e){
@@ -618,14 +621,13 @@ query = "select Id from idioma where nombre='"+ Idioma_TF_Nombre.getText() +"'";
             ResultSet rs = bd.query.getResultSet();
             DefaultTableModel model = (DefaultTableModel)Juego_TB1.getModel();
             while(rs.next()){
-                
                 int id = rs.getInt("id");
                 String idiomas = "";
                 bd.query.execute("select idioma from idiojuego where juego="+id);
                 ResultSet rs2 = bd.query.getResultSet();
                 while(rs2.next()){
                     int ididioma = rs2.getInt(1);
-                    bd.query.execute("select nombre from idioma where id="+idiomas);
+                    bd.query.execute("select nombre from idioma where id="+ididioma);
                     ResultSet r = bd.query.getResultSet();
                     if(r.next()){
                         idiomas += r.getString(1)+",";
@@ -644,7 +646,6 @@ query = "select Id from idioma where nombre='"+ Idioma_TF_Nombre.getText() +"'";
                 model.addRow(row);
             }
             Juego_TB1.setModel(model);
-            
             ActualizarIdiomas();
         }catch(Exception e){
             
@@ -695,6 +696,59 @@ query = "select Id from idioma where nombre='"+ Idioma_TF_Nombre.getText() +"'";
             
             bd.desconectar();
         } catch (Exception e) {
+        }
+    }
+    
+    private void Tabla2(){
+        Juego_TB2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Categoria", "Costo", "Idiomas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        }); 
+        try{
+            bd.query.execute(Juego_SQL.getText());
+            ResultSet rs = bd.query.getResultSet();
+            DefaultTableModel model = (DefaultTableModel)Juego_TB2.getModel();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String idiomas = "";
+                bd.query.execute("select idioma from idiojuego where juego="+id);
+                ResultSet rs2 = bd.query.getResultSet();
+                while(rs2.next()){
+                    int ididioma = rs2.getInt(1);
+                    bd.query.execute("select nombre from idioma where id="+ididioma);
+                    ResultSet r = bd.query.getResultSet();
+                    if(r.next()){
+                        idiomas += r.getString(1)+",";
+                    }
+                }
+                String nombre = rs.getString("nombre");
+                String categoria = rs.getString("categoria");
+                int costo = rs.getInt("costo");
+                Object[] row = {
+                    id,
+                    nombre,
+                    categoria,
+                    costo,
+                    idiomas
+                };
+                model.addRow(row);
+            }
+            Juego_TB2.setModel(model);
+            ActualizarIdiomas();            
+        }catch(Exception e){
+            
         }
     }
         
