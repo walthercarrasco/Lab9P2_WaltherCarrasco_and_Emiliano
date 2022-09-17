@@ -5,6 +5,15 @@
  */
 package Principal;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.ObjectOutputStream;
+import javax.swing.JFileChooser;
+import javax.swing.UIManager;
+
 /**
  *
  * @author emili
@@ -12,14 +21,15 @@ package Principal;
 public class Main extends javax.swing.JFrame {
     
     private database bd = new database("./database.accdb");
-
+    private LibLab9 l = new LibLab9();
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
         bd.conectar();
-        
+        l.loadRecent();
+        l.changeRecent(MItem_ArchivosRecientes, Juego_SQL);
         this.setLocationRelativeTo(null);
     }
 
@@ -73,11 +83,6 @@ public class Main extends javax.swing.JFrame {
         BT_Archivo = new javax.swing.JMenu();
         MItem_AbrirArchivo = new javax.swing.JMenuItem();
         MItem_ArchivosRecientes = new javax.swing.JMenu();
-        ArchivoReciente1 = new javax.swing.JMenuItem();
-        ArchivoReciente2 = new javax.swing.JMenuItem();
-        ArchivoReciente3 = new javax.swing.JMenuItem();
-        ArchivoReciente4 = new javax.swing.JMenuItem();
-        ArchivoReciente5 = new javax.swing.JMenuItem();
         MItem_Limpiar = new javax.swing.JMenuItem();
         MItem_Salir = new javax.swing.JMenuItem();
 
@@ -89,15 +94,25 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Juego_CB.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        Juego_CB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Juego_CB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crear", "Modificar", "Eliminar", "Seleccionar" }));
         jPanel1.add(Juego_CB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 40));
 
         Juego_BT_Ejecutar.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
         Juego_BT_Ejecutar.setText("Ejecutar");
+        Juego_BT_Ejecutar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Juego_BT_EjecutarMousePressed(evt);
+            }
+        });
         jPanel1.add(Juego_BT_Ejecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 230, 40));
 
         Juego_BT_Generar.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
         Juego_BT_Generar.setText("Generar");
+        Juego_BT_Generar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Juego_BT_GenerarMousePressed(evt);
+            }
+        });
         jPanel1.add(Juego_BT_Generar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 230, 40));
 
         Juego_TF2_Nombre.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
@@ -265,25 +280,14 @@ public class Main extends javax.swing.JFrame {
         BT_Archivo.add(MItem_AbrirArchivo);
 
         MItem_ArchivosRecientes.setText("Archivos Recientes");
-
-        ArchivoReciente1.setText("ArchivoReciente1");
-        MItem_ArchivosRecientes.add(ArchivoReciente1);
-
-        ArchivoReciente2.setText("ArchivoReciente2");
-        MItem_ArchivosRecientes.add(ArchivoReciente2);
-
-        ArchivoReciente3.setText("ArchivoReciente3");
-        MItem_ArchivosRecientes.add(ArchivoReciente3);
-
-        ArchivoReciente4.setText("ArchivoReciente4");
-        MItem_ArchivosRecientes.add(ArchivoReciente4);
-
-        ArchivoReciente5.setText("ArchivoReciente5");
-        MItem_ArchivosRecientes.add(ArchivoReciente5);
-
         BT_Archivo.add(MItem_ArchivosRecientes);
 
         MItem_Limpiar.setText("Limpiar");
+        MItem_Limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                MItem_LimpiarMousePressed(evt);
+            }
+        });
         BT_Archivo.add(MItem_Limpiar);
 
         MItem_Salir.setText("Salir");
@@ -316,13 +320,104 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MItem_SalirActionPerformed
 
+    private void Juego_BT_GenerarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Juego_BT_GenerarMousePressed
+        try{
+            if(!ObtenerQuery().isBlank() && !ObtenerQuery().isEmpty()){
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                JFileChooser f = new JFileChooser("./");
+                UIManager.setLookAndFeel(new FlatDarkLaf());   
+                FileWriter fw = null;
+                BufferedWriter bw = null;
+                if(f.showSaveDialog(this) == JFileChooser.APPROVE_OPTION){
+                    File archivo = f.getSelectedFile();     
+                    ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(archivo));
+                    os.writeObject(ObtenerQuery());
+                    os.close();
+                    l.addRecent(archivo.getAbsolutePath());
+                    l.saveRecent();
+                    l.changeRecent(MItem_ArchivosRecientes, Juego_SQL);
+                    
+                }
+        }            
+        }catch(Exception e){
+            
+        }
+
+        
+    }//GEN-LAST:event_Juego_BT_GenerarMousePressed
+
+    private void Juego_BT_EjecutarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Juego_BT_EjecutarMousePressed
+        if(!ObtenerQuery().isEmpty()){
+            try{
+                if(Juego_SQL.getText().equalsIgnoreCase("SQL") || Juego_SQL.getText().isBlank() ||Juego_SQL.getText().isEmpty() ){
+                    bd.query.execute(ObtenerQuery());
+                    bd.commit();
+                }else{
+                    bd.query.execute(Juego_SQL.getText());
+                    bd.commit();
+                }           
+            }catch(Exception e){
+
+            }
+        }
+    }//GEN-LAST:event_Juego_BT_EjecutarMousePressed
+
+    private void MItem_LimpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MItem_LimpiarMousePressed
+        Juego_SQL.setText("SQL");
+    }//GEN-LAST:event_MItem_LimpiarMousePressed
+
+    private String ObtenerQuery(){
+        String query = ""; 
+        if(Juego_CB.getSelectedIndex() == 0){
+            if(!Juego_TF1_Nombre.getText().isBlank() && !Juego_TF1_Nombre.getText().isBlank() &&
+                    !Juego_TF1_Categoria.getText().isBlank() && !Juego_TF1_Categoria.getText().isEmpty() &&
+                    !Juego_TF1_Costo.getText().isBlank() && !Juego_TF1_Costo.getText().isEmpty()){
+                query = "insert into juego (nombre,costo,categoria) ";
+                String nombre = Juego_TF1_Nombre.getText();
+                int costo = Integer.parseInt(Juego_TF1_Costo.getText());
+                String categoria = Juego_TF1_Categoria.getText();
+                query += " values ('"+nombre+"',"+costo+",'"+categoria+"')";
+           
+            }
+        }else if(Juego_CB.getSelectedIndex() == 1){
+            if(!Juego_TF2_Nombre.getText().isBlank() && !Juego_TF2_Nombre.getText().isBlank() &&
+                    !Juego_TF2_Categoria.getText().isBlank() && !Juego_TF2_Categoria.getText().isEmpty() &&
+                    !Juego_TF2_Costo.getText().isBlank() && !Juego_TF2_Costo.getText().isEmpty()){
+                query = "update juego ";
+                String newname = Juego_TF2_Nombre.getText();
+                String newcategoria = Juego_TF2_Categoria.getText();
+                int newcosto = Integer.parseInt(Juego_TF2_Costo.getText());
+                query += " set nombre='"+newname+"',categoria='"+newcategoria+"',costo="+newcosto;
+                int costo = Integer.parseInt(Juego_TF1_Costo.getText());
+                query += " where nombre='"+Juego_TF1_Nombre.getText()+"' OR categoria='"+Juego_TF1_Categoria.getText()+"' OR costo="+costo;
+                
+            }
+        }else if(Juego_CB.getSelectedIndex() == 2){
+            if(!Juego_TF1_Nombre.getText().isBlank() && !Juego_TF1_Nombre.getText().isBlank() &&
+                    !Juego_TF1_Categoria.getText().isBlank() && !Juego_TF1_Categoria.getText().isEmpty() &&
+                    !Juego_TF1_Costo.getText().isBlank() && !Juego_TF1_Costo.getText().isEmpty()){
+                query = "delete juego";
+                String nombre = Juego_TF1_Nombre.getText();
+                int costo = Integer.parseInt(Juego_TF1_Costo.getText());
+                String categoria = Juego_TF1_Categoria.getText();                
+                query += " where nombre='"+nombre+"' OR categoria='"+categoria+"' OR costo="+costo;
+            }            
+        }else if(Juego_CB.getSelectedIndex() == 3){
+            if(!Juego_TF1_Nombre.getText().isBlank() && !Juego_TF1_Nombre.getText().isBlank() &&
+                    !Juego_TF1_Categoria.getText().isBlank() && !Juego_TF1_Categoria.getText().isEmpty() &&
+                    !Juego_TF1_Costo.getText().isBlank() && !Juego_TF1_Costo.getText().isEmpty()){
+                query = "select id,nombre,categoria,costo ";
+                String nombre = Juego_TF1_Nombre.getText();
+                int costo = Integer.parseInt(Juego_TF1_Costo.getText());
+                String categoria = Juego_TF1_Categoria.getText();  
+                query += " where nombre='"+nombre+"' OR categoria='"+categoria+"' OR costo="+costo;
+            }
+        }
+        return query;
+    }
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ArchivoReciente1;
-    private javax.swing.JMenuItem ArchivoReciente2;
-    private javax.swing.JMenuItem ArchivoReciente3;
-    private javax.swing.JMenuItem ArchivoReciente4;
-    private javax.swing.JMenuItem ArchivoReciente5;
     private javax.swing.JMenu BT_Archivo;
     private javax.swing.JTextArea Correos_TA_Mensaje;
     private javax.swing.JTextField Correos_TF_Asunto;

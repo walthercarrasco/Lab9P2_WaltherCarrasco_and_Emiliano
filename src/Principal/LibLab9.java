@@ -113,7 +113,6 @@ public class LibLab9 implements Runnable{
         recientes[recientesPos] = path;
         recientesPos %= 5;
         recientesPos++;
-        
     }
     
     public void sendMail(String mensaje, String asunto, String receptor){
